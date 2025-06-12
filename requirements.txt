@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 flask
 requests
+=======
+flask
+requests
+>>>>>>> 0dc0ed98fd552bf57533f1028f4b5f4ec6429ec2
