@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-flask
-requests
-=======
-flask
-requests
->>>>>>> 0dc0ed98fd552bf57533f1028f4b5f4ec6429ec2
+Flask==2.3.3
+gunicorn==21.2.0
+requests==2.31.0
