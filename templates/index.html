@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Anime Recommender</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #1e1e2f, #27293d);
+            color: #f0f0f0;
+        }
+
+        header {
+            background: linear-gradient(to right, #ffc371, #ff5f6d);
+            padding: 20px;
+            text-align: center;
+            color: #fff;
+            font-size: 32px;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        main {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        form {
+            background: #2a2b3c;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #ffc107;
+        }
+
+        select, input[type="text"], button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        input[type="text"] {
+            background: #444;
+            color: #fff;
+        }
+
+        select {
+            background: #333;
+            color: #fff;
+        }
+
+        button {
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: linear-gradient(to right, #ff4b2b, #ff416c);
+        }
+
+        .anime {
+            background: #1e1f2b;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .anime img {
+            width: 120px;
+            border-radius: 8px;
+        }
+
+        .anime-info {
+            flex-grow: 1;
+        }
+
+        .anime-info h3 {
+            margin: 0;
+            color: #90caf9;
+        }
+
+        .anime-info p {
+            margin: 5px 0;
+            color: #ccc;
+        }
+
+        a {
+            color: #90caf9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        h2 {
+            color: #ffa726;
+            border-bottom: 2px solid #ffa726;
+            padding-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>Anime Recommender</header>
+
+    <main>
+        <form method="post">
+            <label>Is this your first anime?</label>
+            <select name="first_time">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+
+            <label>Enter Genre</label>
+            <input type="text" name="genre" placeholder="e.g. action, romance" required>
+
+            <button type="submit">🎬 Recommend Anime</button>
+        </form>
+
+        {% if genre %}
+            <h2>Top Anime in "{{ genre.title() }}"</h2>
+            {% for anime in recommendations %}
+                <div class="anime">
+                    <img src="{{ anime.image }}" alt="{{ anime.title }}">
+                    <div class="anime-info">
+                        <h3><a href="{{ anime.url }}" target="_blank">{{ anime.title }}</a></h3>
+                        <p><strong>Score:</strong> {{ anime.score }}</p>
+                        <p><strong>Rating:</strong> {{ anime.rating }}</p>
+                        <p><strong>Status:</strong> {{ anime.status }}</p>
+                        <p><strong>Episodes:</strong> {{ anime.episodes }}</p>
+                        <p><strong>Duration:</strong> {{ anime.duration }}</p>
+                        <p><strong>Description:</strong> {{ anime.synopsis[:300] }}...</p>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </main>
+</body>
+</html>
