@@ -1,0 +1,12 @@
+action:1
+adventure:2
+comedy:4
+drama:8
+fantasy:10
+horror:14
+mystery:7
+romance:22
+sci-fi:24
+sports:30
+slice of life:36
+supernatural:37
